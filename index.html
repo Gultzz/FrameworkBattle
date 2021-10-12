@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frameworks Battle</title>
+    <style>
+        body{
+            background-color: #222;
+        }
+        *{
+            border: none;
+            margin: 0;
+            padding: 0;
+            transition: 0.4s;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        button{
+            cursor: pointer;
+        }
+        .divsao{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3%;
+            margin-bottom: 10px;
+        }
+        .divIn{
+            display: flex;
+            justify-content: center;
+        }
+
+        .tema{
+            cursor: pointer;
+        }
+        .div-master{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .divs{
+            padding: 20px;
+            margin: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .divs img{
+            width: 200px;
+        }
+        .divs h1{
+            color: #777;
+            margin-top: 10px;
+        }
+        .divs p{
+            text-align: center;
+            color: #777;
+            margin-top: 10px;
+            font-size: 150%;
+            font-weight: 800;
+        }
+        .buttons{
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#fff;
+            color: #000;
+        }
+        .react{
+            border: 2px solid #61dafb;
+            box-shadow: inset 0 0 3px #61dafb, 0 0 3px #61dafb;
+        }
+        .react:hover{
+            box-shadow: inset 0 0 10px #61dafb, 0 0 10px #61dafb;
+        }
+        .vue{
+            border: 2px solid #41b883;
+            box-shadow: inset 0 0 3px #41b883, 0 0 3px #41b883;
+        }
+        .vue:hover{
+            box-shadow: inset 0 0 10px #41b883, 0 0 10px #41b883;
+        }
+        .angular{
+            border: 2px solid #fa2020;
+            box-shadow: inset 0 0 3px #fa2020, 0 0 3px #fa2020;
+        }
+        .angular:hover{
+            box-shadow: inset 0 0 10px #fa2020, 0 0 10px #fa2020;
+        }
+    </style>
+</head>
+<body>
+    <div class="divsao">
+        <div class="divIn">
+            <a class="tema" onclick="mudarCor()">
+                <img class="solLua" src="img/sun.svg">
+            </a>
+        </div>
+        <div class="div-master">
+            <div class="divs react">
+                <a target="_blank" href="https://pt-br.reactjs.org/docs/create-a-new-react-app.html"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"></a>
+                <h1>React</h1>
+                <p id="pontoReact">0</p>
+                <div>
+                    <button onclick="addReact()" class="buttons">Adicionar</button>
+                    <button onclick="excReact()" class="buttons">Reduzir</button>
+                </div>
+            </div>
+            <div class="divs vue">
+                <a target="_blank" href="https://br.vuejs.org/v2/guide/installation.html"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg"></a>
+                <h1>Vue</h1>
+                <p id="pontoVue">0</p>
+                <div>
+                    <button onclick="addVue()" class="buttons">Adicionar</button>
+                    <button onclick="excVue()" class="buttons">Reduzir</button>
+                </div>
+            </div>
+            <div class="divs angular">
+                <a target="_blank" href="https://angular.io/guide/setup-local"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg"></a>
+                <h1>Angular</h1>
+                <p id="pontoAngular">0</p>
+                <div>
+                    <button onclick="addAngular()" class="buttons">Adicionar</button>
+                    <button onclick="excAngular()" class="buttons">Reduzir</button>
+                </div>
+            </div>
+        </div>
+        <div class="remove">
+            <button onclick="resetar()" class="buttons">Limpar</button>
+        </div>
+    </div>
+    <script>
+        var divs = document.querySelectorAll('.divs');
+        var pes = document.getElementsByTagName('p');
+        var has1 = document.getElementsByTagName('h1');
+        var buttons = document.querySelectorAll('.buttons');
+        var body = document.body;
+        var solLua = document.querySelector(".solLua");
+
+        function mudarCor(){
+            console.log(buttons, pes);
+            if( body.style.backgroundColor === '' || body.style.backgroundColor === "rgb(34, 34, 34)"){
+                body.style.backgroundColor = "rgb(255, 255, 255)";
+                solLua.src = 'img/moon.svg';
+                    for(let a = 0; a <= 7; a++){
+                        buttons[a].style.color = "#fff";
+                        buttons[a].style.backgroundColor = '#000';
+                    }
+                    for(let i = 0; i <= 3; i++){
+                        pes[i].style.color = "#000";
+                        has1[i].style.color = "#000";
+                    }
+            }else{
+                body.style.backgroundColor = "rgb(34, 34, 34)";
+                solLua.src = 'img/sun.svg';
+                    for(let a = 0; a <= 7; a++){
+                        buttons[a].style.color = "#000";
+                        buttons[a].style.backgroundColor = "#fff";
+                    }
+                    for(let i = 0; i <= 3; i++){
+                        pes[i].style.color = "#fff";
+                        has1[i].style.color = "#fff";
+                    }
+            }
+            salvar()
+        }
+
+        let pontosVue = document.getElementById('pontoVue');
+        let pontosReact = document.getElementById('pontoReact');
+        let pontosAngular = document.getElementById('pontoAngular');
+
+        let react = localStorage.reactValue || 0;
+        let vue = localStorage.vueValue || 0;
+        let angular = localStorage.angularValue || 0;
+        
+        function addReact(){
+            react++;
+            pontosReact.innerHTML = react;
+            salvar()
+        }
+        function addVue(){
+            vue++;
+            pontosVue.innerHTML = vue;
+            salvar()
+        }
+        function addAngular(){
+            angular++;
+            pontosAngular.innerHTML = angular;
+            salvar()
+        }
+
+        function excReact(){
+            if(react > 0){
+                react--;
+            }
+            pontosReact.innerHTML = react;
+            salvar()
+        }
+        function excVue(){
+            if(vue > 0){
+                vue--;
+            }
+            pontosVue.innerHTML = vue;
+            salvar()
+        }
+        function excAngular(){
+            if(angular > 0){
+                angular--;
+            }
+            pontosAngular.innerHTML = angular;
+            salvar()
+        }
+
+        function salvar(){
+            localStorage.reactValue = react;
+            localStorage.vueValue = vue;
+            localStorage.angularValue = angular;
+        }
+        function atualizar(){
+            pontosReact.innerHTML = react;
+            pontosVue.innerHTML = vue;
+            pontosAngular.innerHTML = angular;
+        }
+        atualizar();
+        function resetar(){
+            delete localStorage.reactValue;
+            delete localStorage.vueValue;
+            delete localStorage.angularValue;
+        }
+    </script>
+</body>
+</html>
